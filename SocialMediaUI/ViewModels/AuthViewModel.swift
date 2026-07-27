@@ -8,12 +8,13 @@
 import Foundation
 import Combine
 
+@Observable
 @MainActor
 class AuthViewModel: ObservableObject {
-    @Published var currentUser: User?
-    @Published var isAuthenticated: Bool = false
-    @Published var errorMessage: String?
-    @Published var isLoading: Bool = false
+     var currentUser: User?
+     var isAuthenticated: Bool = false
+     var errorMessage: String?
+     var isLoading: Bool = false
     
     private let tokenKey = "authToken"
     

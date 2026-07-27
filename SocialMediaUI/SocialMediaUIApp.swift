@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct SocialMediaUIApp: App {
+    @State private var authViewModel = AuthViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if authViewModel.isAuthenticated {
+                Text("succed login")
+            }else {
+                LoginView()
+                    .environment(authViewModel)
+            }
+            
         }
     }
 }
