@@ -11,6 +11,7 @@ struct PostListView: View {
     @State private var postViewModel = PostViewModel()
     @Environment(AuthViewModel.self) private var authViewModel
     
+    @State private var showProfile = false
     
     var body: some View {
         NavigationStack{
@@ -34,6 +35,21 @@ struct PostListView: View {
                 }
             }
             .navigationTitle("Posts")
+            
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showProfile.toggle()
+                    } label: {
+                        Image(systemName: "person.circle")
+                            .font(.title3)
+                    }
+
+                }
+            }
+            .sheet(isPresented: $showProfile){
+                ProfileView()
+            }
             .task {
                 if let token = UserDefaults.standard.string(forKey: "authToken"){
                     await postViewModel.fetchPosts(token: token)

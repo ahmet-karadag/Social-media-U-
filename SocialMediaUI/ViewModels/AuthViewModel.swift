@@ -19,7 +19,7 @@ class AuthViewModel: ObservableObject {
     private let tokenKey = "authToken"
     
     init () {
-        
+        checkExistingUser()
     }
     private func checkExistingUser() {
         // TODO: Replace with 'let token' when validating the token against the backend later

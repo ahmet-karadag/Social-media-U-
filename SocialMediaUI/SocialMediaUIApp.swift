@@ -13,12 +13,12 @@ struct SocialMediaUIApp: App {
     var body: some Scene {
         WindowGroup {
             if authViewModel.isAuthenticated {
-                Text("succed login")
+                PostListView()
             }else {
                 LoginView()
                     .environment(authViewModel)
             }
-            
         }
+        .environment(authViewModel)
     }
 }
