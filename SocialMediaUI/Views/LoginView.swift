@@ -28,6 +28,13 @@ struct LoginView: View {
                 .background(Color(.systemGray6))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
+            if let errorMessage = authViewModel.errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
             Button {
                 Task {
                     await authViewModel.logIn(email: email, password: password)
