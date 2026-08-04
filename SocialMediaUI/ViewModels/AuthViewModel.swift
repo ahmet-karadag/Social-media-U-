@@ -35,7 +35,7 @@ class AuthViewModel: ObservableObject {
         
         do {
             let response: AuthResponse = try await APIService.shared.request(
-                endpoint: "/user/login",
+                endpoint: "/auth/login",
                 method: "POST",
                 body: body
             )
@@ -49,15 +49,15 @@ class AuthViewModel: ObservableObject {
             self.isLoading = false
         }
     }
-    func register(name: String,email: String, password: String) async {
+    func register(username: String,email: String, password: String) async {
         isLoading = true
         errorMessage = nil
         
-        let body = ["name": name, "email": email, "password": password]
+        let body = ["username": username, "email": email, "password": password]
         
         do {
             let response: AuthResponse = try await APIService.shared.request(
-                endpoint: "/user/register",
+                endpoint: "/auth/register",
                 method: "POST",
                 body: body
             )

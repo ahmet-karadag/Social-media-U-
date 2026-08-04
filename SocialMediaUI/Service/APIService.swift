@@ -33,7 +33,7 @@ class APIService {
     private init(){
         
     }
-    private let baseUrl = "http://localhost:5000/api"
+    private let baseUrl = "http://localhost:3000/api"
     
     //request func
     func request<T: Decodable>(

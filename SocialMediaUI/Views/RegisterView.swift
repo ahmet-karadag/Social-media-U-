@@ -49,7 +49,7 @@ struct RegisterView: View {
             
             Button {
                 Task {
-                    await authViewModel.register(name: name, email: email, password: password)
+                    await authViewModel.register(username: name, email: email, password: password)
                 }
             } label: {
                 
